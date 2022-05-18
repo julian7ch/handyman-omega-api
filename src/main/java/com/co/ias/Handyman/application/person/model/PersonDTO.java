@@ -34,7 +34,7 @@ public class PersonDTO {
     public Person toDomain(){
         return new Person(
                 new PersonId(personId),
-                new PersonNames(personNames),
+                new PersonName(personNames),
                 new PersonIdentification(personIdentification),
                 new IdTypeIdentification(idTypeIdentification)
         );
@@ -47,7 +47,7 @@ public class PersonDTO {
     public static PersonDTO fromDomain(Person person){
         return new PersonDTO(
                 person.getPersonId().getValue(),
-                person.getPersonNames().getValue(),
+                person.getPersonName().getValue(),
                 person.getPersonIdentification().getValue(),
                 person.getIdTypeIdentification().getValue()
         );

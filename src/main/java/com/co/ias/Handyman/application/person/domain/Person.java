@@ -1,20 +1,15 @@
 package com.co.ias.Handyman.application.person.domain;
 
-import com.co.ias.Handyman.application.person.domain.PersonId;
-import com.co.ias.Handyman.application.person.domain.PersonNames;
-import com.co.ias.Handyman.application.person.domain.PersonIdentification;
-import com.co.ias.Handyman.application.person.domain.IdTypeIdentification;
-
 public class Person {
 
     private final PersonId personId;
-    private final PersonNames personNames;
+    private final PersonName personNames;
     private final PersonIdentification personIdentification;
     private final IdTypeIdentification idTypeIdentification;
 
 
 
-    public Person(PersonId personId, PersonNames personNames, PersonIdentification personIdentification, IdTypeIdentification idTypeIdentification) {
+    public Person(PersonId personId, PersonName personNames, PersonIdentification personIdentification, IdTypeIdentification idTypeIdentification) {
         this.personId = personId;
         this.personNames = personNames;
         this.personIdentification = personIdentification;
@@ -25,7 +20,7 @@ public class Person {
         return personId;
     }
 
-    public PersonNames getPersonNames() {
+    public PersonName getPersonName() {
         return personNames;
     }
 
