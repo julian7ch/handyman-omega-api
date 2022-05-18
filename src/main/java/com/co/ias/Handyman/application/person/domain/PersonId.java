@@ -9,7 +9,7 @@ public class PersonId {
 
     public PersonId(Integer value) {
         Validate.notNull(value, "Person ID can't be null");
-        Validate.isTrue( value < 99999999, "Product ID can't be longer than 10 characters" );
+        Validate.isTrue( value < 99999999, "Person ID can't be longer than 10 characters" );
         this.value = value;
     }
 
