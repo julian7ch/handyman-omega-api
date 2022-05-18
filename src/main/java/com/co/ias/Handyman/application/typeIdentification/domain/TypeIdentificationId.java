@@ -1,12 +1,12 @@
-package com.co.ias.Handyman.application.person.domain;
+package com.co.ias.Handyman.application.typeIdentification.domain;
 
 import org.apache.commons.lang3.Validate;
 
-public class IdTypeIdentification {
+public class TypeIdentificationId {
 
     private final Integer value;
 
-    public IdTypeIdentification(Integer value) {
+    public TypeIdentificationId(Integer value) {
         Validate.notNull(value, "Id Type of Identification can't be null");
         this.value = value;
     }

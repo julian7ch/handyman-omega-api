@@ -1,6 +1,7 @@
 package com.co.ias.Handyman.application.person.model;
 
 import com.co.ias.Handyman.application.person.domain.*;
+import com.co.ias.Handyman.application.typeIdentification.domain.TypeIdentificationId;
 
 public class PersonDTO {
 
@@ -36,7 +37,7 @@ public class PersonDTO {
                 new PersonId(personId),
                 new PersonName(personNames),
                 new PersonIdentification(personIdentification),
-                new IdTypeIdentification(idTypeIdentification)
+                new TypeIdentificationId(idTypeIdentification)
         );
     }
 

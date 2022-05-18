@@ -6,7 +6,7 @@ import com.co.ias.Handyman.application.request.domain.RequestId;
 public interface RequestRepository {
 
     Integer store(Request request);
-    RequestId getId(RequestId requestId);
+    Integer getId(RequestId requestId);
     Request update(Request request);
     Integer delete(RequestId requestId);
 }
