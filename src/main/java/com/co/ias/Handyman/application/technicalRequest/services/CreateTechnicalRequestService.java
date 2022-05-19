@@ -34,4 +34,6 @@ public class CreateTechnicalRequestService implements CreateTechnicalRequestUseC
 
         return technicalRequestDTO;
     }
+
+
 }

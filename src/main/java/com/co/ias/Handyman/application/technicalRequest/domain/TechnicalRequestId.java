@@ -7,8 +7,7 @@ public class TechnicalRequestId {
     private final Integer value;
 
     public TechnicalRequestId(Integer value) {
-        Validate.notNull(value, "Technical Request ID can't be null");
-        Validate.isTrue( value < 99999999, "Product ID can't be longer than 10 characters" );
+
         this.value = value;
     }
 

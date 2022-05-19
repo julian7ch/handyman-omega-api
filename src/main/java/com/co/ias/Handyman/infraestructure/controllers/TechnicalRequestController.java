@@ -27,7 +27,7 @@ public class TechnicalRequestController {
              return ResponseEntity.ok(techRequest);
 
 
-        } catch (IllegalArgumentException | NullPointerException exception){
+        } catch (IllegalArgumentException | NullPointerException exception ){
             ApplicationError appError = new ApplicationError(
                     "Input no Validation",
                     "Bad Input data"

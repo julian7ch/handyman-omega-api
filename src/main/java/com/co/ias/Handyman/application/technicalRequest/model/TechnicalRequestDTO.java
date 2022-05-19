@@ -6,6 +6,7 @@ import com.co.ias.Handyman.application.technicalRequest.domain.EndDay;
 import com.co.ias.Handyman.application.technicalRequest.domain.StartDay;
 import com.co.ias.Handyman.application.technicalRequest.domain.TechnicalRequest;
 import com.co.ias.Handyman.application.technicalRequest.domain.TechnicalRequestId;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import javax.persistence.Id;
@@ -22,23 +23,23 @@ public class TechnicalRequestDTO {
     @Id
     @SequenceGenerator(name = "technical_request_id_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_technical_request", unique = true, nullable = false)
+    @Column(name = "id_technical_request")
     private Integer technicalRequestId;
 
-
-
-
-
-
     @Column(name = "id_request")
-    private  Integer requestId;
+    private Integer requestId;
+
     @Column(name = "id_technical")
     private  Integer technicalId;
-    @Temporal(TemporalType.DATE)
+
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "start_date")
-    private  Date startDay;
-    @Temporal(TemporalType.DATE)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT-5")
+    private Date startDay;
+
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "end_date")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT-5")
     private  Date endDay;
 
     /*
@@ -98,6 +99,7 @@ public class TechnicalRequestDTO {
         this.technicalRequestId = technicalRequestId;
     }
 
+
     public Integer getRequestId() {
         return requestId;
     }
@@ -105,6 +107,7 @@ public class TechnicalRequestDTO {
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
+
 
     public Integer getTechnicalId() {
         return technicalId;
@@ -114,6 +117,7 @@ public class TechnicalRequestDTO {
         this.technicalId = technicalId;
     }
 
+
     public Date getStartDay() {
         return startDay;
     }
@@ -121,6 +125,7 @@ public class TechnicalRequestDTO {
     public void setStartDay(Date startDay) {
         this.startDay = startDay;
     }
+
 
     public Date getEndDay() {
         return endDay;
