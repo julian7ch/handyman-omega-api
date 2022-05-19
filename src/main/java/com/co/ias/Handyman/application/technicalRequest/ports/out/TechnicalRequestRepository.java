@@ -1,13 +1,14 @@
 package com.co.ias.Handyman.application.technicalRequest.ports.out;
 
 
-import com.co.ias.Handyman.application.technicalRequest.domain.TechnicalRequest;
-import com.co.ias.Handyman.application.technicalRequest.domain.TechnicalRequestId;
 
-public interface TechnicalRequestRepository {
 
-    Integer store(TechnicalRequest technicalRequest);
-    Integer getId(TechnicalRequestId technicalRequestId);
-    TechnicalRequest update(TechnicalRequest technicalRequest);
-    Integer delete(TechnicalRequestId technicalRequestId);
+
+import com.co.ias.Handyman.application.technicalRequest.model.TechnicalRequestDTO;
+import org.springframework.data.repository.CrudRepository;
+
+
+public interface TechnicalRequestRepository extends CrudRepository<TechnicalRequestDTO,Integer> {
+
+
 }

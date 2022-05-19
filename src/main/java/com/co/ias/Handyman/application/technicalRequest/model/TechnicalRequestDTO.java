@@ -7,18 +7,39 @@ import com.co.ias.Handyman.application.technicalRequest.domain.StartDay;
 import com.co.ias.Handyman.application.technicalRequest.domain.TechnicalRequest;
 import com.co.ias.Handyman.application.technicalRequest.domain.TechnicalRequestId;
 
+import javax.persistence.*;
+import javax.persistence.Id;
 import java.util.Date;
 
+@Entity
+@Table(name = "technical_request") // mantener en minúsculas en la DB
 public class TechnicalRequestDTO {
+
 
     /*
       Technical Request DTO Attributes
     */
+    @Id
+    @SequenceGenerator(name = "technical_request_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_technical_request", unique = true, nullable = false)
     private Integer technicalRequestId;
-    private Integer requestId;
-    private Integer technicalId;
-    private Date startDay;
-    private Date endDay;
+
+
+
+
+
+
+    @Column(name = "id_request")
+    private  Integer requestId;
+    @Column(name = "id_technical")
+    private  Integer technicalId;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "start_date")
+    private  Date startDay;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "end_date")
+    private  Date endDay;
 
     /*
       No Args Constructor
@@ -42,7 +63,7 @@ public class TechnicalRequestDTO {
     */
     public TechnicalRequest toDomain(){
         return new TechnicalRequest(
-                new TechnicalRequestId(technicalId),
+                new TechnicalRequestId(technicalRequestId),
                 new RequestId(requestId),
                 new TechnicalId(technicalId),
                 new StartDay(startDay),
@@ -66,9 +87,12 @@ public class TechnicalRequestDTO {
     /*
       Getters and Setters
     */
+
+
     public Integer getTechnicalRequestId() {
-        return technicalRequestId;
+        return this.technicalRequestId;
     }
+
 
     public void setTechnicalRequestId(Integer technicalRequestId) {
         this.technicalRequestId = technicalRequestId;
