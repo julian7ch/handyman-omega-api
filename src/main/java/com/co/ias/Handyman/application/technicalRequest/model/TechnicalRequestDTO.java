@@ -35,11 +35,9 @@ public class TechnicalRequestDTO {
     public Integer technicalId;
 
     @Column(name = "start_date")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT-5")
     private LocalDateTime startDay;
 
     @Column(name = "end_date")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT-5")
     private LocalDateTime endDay;
 
     /*

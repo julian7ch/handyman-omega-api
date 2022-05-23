@@ -61,38 +61,39 @@ public class CreateTechnicalRequestService implements CreateTechnicalRequestUseC
                 now);
 
         if (existsIdTech == true){
-            if (existsIdService == true){
-                if(existsDate == false){
-                    if(!startAfterNow && daysBeforeService < 7){
-
-                        technicalRequestRepository.save(technicalRequestDTO);
-
-                        return technicalRequestDTO;
-
-
-                    } else{
-                        throw new DateTimeException("Days Wrong");
-                    }
-
-                } else {
-                    throw new NoSuchFieldException("Data Not Found");
-                }
-
-
-            } else{
-                throw new FileNotFoundException("Data Not Found");
-            }
-
+            return getTechnicalRequestDTO(technicalRequestDTO, existsIdService, existsDate, startAfterNow, daysBeforeService);
         } else {
             throw new SQLException("Data Not Found");
 
         }
 
-
-
-
     }
 
+    private TechnicalRequestDTO getTechnicalRequestDTO(TechnicalRequestDTO technicalRequestDTO, boolean existsIdService, boolean existsDate, boolean startAfterNow, Long daysBeforeService) throws NoSuchFieldException, FileNotFoundException {
+        if (existsIdService == true){
+            return getTechnicalRequestDTO(technicalRequestDTO, existsDate, startAfterNow, daysBeforeService);
+        } else{
+            throw new FileNotFoundException("Data Not Found");
+        }
+    }
+
+    private TechnicalRequestDTO getTechnicalRequestDTO(TechnicalRequestDTO technicalRequestDTO, boolean existsDate, boolean startAfterNow, Long daysBeforeService) throws NoSuchFieldException {
+        if(existsDate == false){
+            return getTechnicalRequestDTO(technicalRequestDTO, startAfterNow, daysBeforeService);
+
+        } else {
+            throw new NoSuchFieldException("Data Not Found");
+        }
+    }
+
+    private TechnicalRequestDTO getTechnicalRequestDTO(TechnicalRequestDTO technicalRequestDTO, boolean startAfterNow, Long daysBeforeService) {
+        if(!startAfterNow && daysBeforeService < 7){
+            technicalRequestRepository.save(technicalRequestDTO);
+            return technicalRequestDTO;
+        } else{
+            throw new DateTimeException("Days Wrong");
+        }
+    }
 
 
 }
