@@ -14,9 +14,12 @@ public class Technical {
     private final TechnicalId technicalID;
     private final PersonId personId;
 
+
+
     public Technical(TechnicalId technicalID, PersonId personId) {
         this.technicalID = technicalID;
         this.personId = personId;
+
     }
 
     public TechnicalId getTechnicalID() {

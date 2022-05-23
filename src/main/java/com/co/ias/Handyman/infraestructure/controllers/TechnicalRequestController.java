@@ -3,13 +3,15 @@ package com.co.ias.Handyman.infraestructure.controllers;
 import com.co.ias.Handyman.application.technicalRequest.model.TechnicalRequestDTO;
 import com.co.ias.Handyman.application.technicalRequest.ports.in.CreateTechnicalRequestUseCase;
 import com.co.ias.Handyman.shared.errors.ApplicationError;
+import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.cache.support.NullValue;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
+
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 @RestController
 public class TechnicalRequestController {
 
@@ -26,6 +28,13 @@ public class TechnicalRequestController {
              TechnicalRequestDTO techRequest = createTechnicalRequestUseCase.execute(technicalRequestDTO);
              return ResponseEntity.ok(techRequest);
 
+
+        } catch (SQLException exception){
+            ApplicationError appError = new ApplicationError(
+                    "No se encuentra el ID del técnico especificado.",
+                    exception.getMessage()
+            );
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(appError);
 
         } catch (IllegalArgumentException | NullPointerException exception ){
             ApplicationError appError = new ApplicationError(

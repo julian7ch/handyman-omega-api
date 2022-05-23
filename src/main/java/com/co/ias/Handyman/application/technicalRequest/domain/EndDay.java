@@ -1,16 +1,17 @@
 package com.co.ias.Handyman.application.technicalRequest.domain;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class EndDay {
 
-    private final Date value;
+    private final LocalDateTime value;
 
-    public EndDay(Date value) {
+    public EndDay(LocalDateTime value) {
         this.value = value;
     }
 
-    public Date getValue() {
+    public LocalDateTime getValue() {
         return value;
     }
 

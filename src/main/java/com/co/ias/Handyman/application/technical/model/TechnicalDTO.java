@@ -1,17 +1,22 @@
 package com.co.ias.Handyman.application.technical.model;
 
 import com.co.ias.Handyman.application.person.domain.PersonId;
-import com.co.ias.Handyman.application.person.domain.PersonName;
 import com.co.ias.Handyman.application.technical.domain.Technical;
 import com.co.ias.Handyman.application.technical.domain.TechnicalId;
+
 
 public class TechnicalDTO {
 
     /*
      Technical DTO Attributes
     */
+
+
     private Integer technicalId;
+
+
     private  Integer personId;
+
 
     /*
       No Args Constructor
@@ -27,7 +32,10 @@ public class TechnicalDTO {
     public TechnicalDTO(Integer technicalId, Integer personId) {
         this.technicalId = technicalId;
         this.personId = personId;
+
     }
+
+
 
     /*
       Method to domain
@@ -69,4 +77,8 @@ public class TechnicalDTO {
     public void setPersonId(Integer personId) {
         this.personId = personId;
     }
+
+
+
+
 }

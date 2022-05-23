@@ -2,6 +2,7 @@ package com.co.ias.Handyman.application.technicalRequest.model;
 
 import com.co.ias.Handyman.application.request.domain.RequestId;
 import com.co.ias.Handyman.application.technical.domain.TechnicalId;
+import com.co.ias.Handyman.application.technical.model.TechnicalDTO;
 import com.co.ias.Handyman.application.technicalRequest.domain.EndDay;
 import com.co.ias.Handyman.application.technicalRequest.domain.StartDay;
 import com.co.ias.Handyman.application.technicalRequest.domain.TechnicalRequest;
@@ -10,10 +11,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@Table(name = "technical_request") // mantener en minúsculas en la DB
+@Table(name = "technical_request")
 public class TechnicalRequestDTO {
 
 
@@ -30,17 +32,15 @@ public class TechnicalRequestDTO {
     private Integer requestId;
 
     @Column(name = "id_technical")
-    private  Integer technicalId;
+    public Integer technicalId;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "start_date")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT-5")
-    private Date startDay;
+    private LocalDateTime startDay;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "end_date")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "GMT-5")
-    private  Date endDay;
+    private LocalDateTime endDay;
 
     /*
       No Args Constructor
@@ -51,7 +51,7 @@ public class TechnicalRequestDTO {
     /*
       All Args Constructor
     */
-    public TechnicalRequestDTO(Integer technicalRequestId, Integer requestId,  Integer technicalId, Date startDay, Date endDay) {
+    public TechnicalRequestDTO(Integer technicalRequestId, Integer requestId,Integer technicalId, LocalDateTime startDay, LocalDateTime endDay) {
         this.technicalRequestId = technicalRequestId;
         this.requestId = requestId;
         this.technicalId = technicalId;
@@ -118,20 +118,20 @@ public class TechnicalRequestDTO {
     }
 
 
-    public Date getStartDay() {
+    public LocalDateTime getStartDay() {
         return startDay;
     }
 
-    public void setStartDay(Date startDay) {
+    public void setStartDay(LocalDateTime startDay) {
         this.startDay = startDay;
     }
 
 
-    public Date getEndDay() {
+    public LocalDateTime getEndDay() {
         return endDay;
     }
 
-    public void setEndDay(Date endDay) {
+    public void setEndDay(LocalDateTime endDay) {
         this.endDay = endDay;
     }
 }

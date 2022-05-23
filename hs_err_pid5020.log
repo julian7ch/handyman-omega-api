@@ -1,0 +1,200 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 234881024 bytes for Failed to commit area from 0x0000000721000000 to 0x000000072f000000 of length 234881024.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (./src/hotspot/os/windows/os_windows.cpp:3390), pid=5020, tid=6676
+#
+# JRE version:  (11.0.15+9) (build )
+# Java VM: OpenJDK 64-Bit Server VM (11.0.15+9-LTS, mixed mode, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -XX:TieredStopAtLevel=1 -Xverify:none -Dspring.output.ansi.enabled=always -Dcom.sun.management.jmxremote -Dspring.jmx.enabled=true -Dspring.liveBeansView.mbeanDomain -Dspring.application.admin.enabled=true -javaagent:S:\AppPrograming\IntelliJ\IntelliJ IDEA 2022.1.1\lib\idea_rt.jar=62439:S:\AppPrograming\IntelliJ\IntelliJ IDEA 2022.1.1\bin -Dfile.encoding=UTF-8 com.co.ias.Handyman.HandymanApplication
+
+Host: AMD Ryzen 3 3200G with Radeon Vega Graphics    , 4 cores, 13G,  Windows 10 , 64 bit Build 19041 (10.0.19041.1706)
+Time: Thu May 19 14:51:23 2022 Hora est. Pacífico, Sudamérica elapsed time: 0.016001 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000002456f75a800):  JavaThread "Unknown thread" [_thread_in_vm, id=6676, stack(0x000000818ad00000,0x000000818ae00000)]
+
+Stack: [0x000000818ad00000,0x000000818ae00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x61e7ba]
+V  [jvm.dll+0x7ab749]
+V  [jvm.dll+0x7ace38]
+V  [jvm.dll+0x7ad513]
+V  [jvm.dll+0x24f968]
+V  [jvm.dll+0x61ba5a]
+V  [jvm.dll+0x6102b5]
+V  [jvm.dll+0x30768c]
+V  [jvm.dll+0x307512]
+V  [jvm.dll+0x30c226]
+V  [jvm.dll+0x3528cf]
+V  [jvm.dll+0x352300]
+V  [jvm.dll+0x2e4688]
+V  [jvm.dll+0x2e57e6]
+V  [jvm.dll+0x785597]
+V  [jvm.dll+0x786d1f]
+V  [jvm.dll+0x35f609]
+V  [jvm.dll+0x768530]
+V  [jvm.dll+0x3cd0ff]
+V  [jvm.dll+0x3cf491]
+C  [jli.dll+0x5207]
+C  [ucrtbase.dll+0x21bb2]
+C  [KERNEL32.DLL+0x17034]
+C  [ntdll.dll+0x52651]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x000002456d6bbe00, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x000002456f775800 GCTaskThread "GC Thread#0" [stack: 0x000000818ae00000,0x000000818af00000] [id=13496]
+  0x000002456f7c6000 ConcurrentGCThread "G1 Main Marker" [stack: 0x000000818af00000,0x000000818b000000] [id=6700]
+  0x000002456f7c7800 ConcurrentGCThread "G1 Conc#0" [stack: 0x000000818b000000,0x000000818b100000] [id=14276]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffe41ab3e57]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x000002456f7571c0] Heap_lock - owner thread: 0x000002456f75a800
+
+Heap address: 0x0000000721000000, size: 3568 MB, Compressed Oops mode: Non-zero based: 0x0000000721000000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (1 events):
+Event: 0.010 Loaded shared library C:\Users\raque\.jdks\corretto-11.0.15\bin\zip.dll
+
+
+Dynamic libraries:
+0x00007ff6239f0000 - 0x00007ff6239fd000 	C:\Users\raque\.jdks\corretto-11.0.15\bin\java.exe
+0x00007ffea66d0000 - 0x00007ffea68c5000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffea5420000 - 0x00007ffea54dd000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffea3e50000 - 0x00007ffea411d000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffea4120000 - 0x00007ffea4220000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffe4c5d0000 - 0x00007ffe4c5e9000 	C:\Users\raque\.jdks\corretto-11.0.15\bin\VCRUNTIME140.dll
+0x00007ffe4c5f0000 - 0x00007ffe4c607000 	C:\Users\raque\.jdks\corretto-11.0.15\bin\jli.dll
+0x00007ffe90140000 - 0x00007ffe903da000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_60b5254171f9507e\COMCTL32.dll
+0x00007ffea50e0000 - 0x00007ffea5280000 	C:\Windows\System32\USER32.dll
+0x00007ffea6250000 - 0x00007ffea62ee000 	C:\Windows\System32\msvcrt.dll
+0x00007ffea45f0000 - 0x00007ffea4612000 	C:\Windows\System32\win32u.dll
+0x00007ffea6420000 - 0x00007ffea644a000 	C:\Windows\System32\GDI32.dll
+0x00007ffea42f0000 - 0x00007ffea43fb000 	C:\Windows\System32\gdi32full.dll
+0x00007ffea4250000 - 0x00007ffea42ed000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffea53f0000 - 0x00007ffea5420000 	C:\Windows\System32\IMM32.DLL
+0x00007ffe4c530000 - 0x00007ffe4c5cb000 	C:\Users\raque\.jdks\corretto-11.0.15\bin\msvcp140.dll
+0x00007ffe417c0000 - 0x00007ffe42343000 	C:\Users\raque\.jdks\corretto-11.0.15\bin\server\jvm.dll
+0x00007ffea6540000 - 0x00007ffea65ee000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffea61b0000 - 0x00007ffea624c000 	C:\Windows\System32\sechost.dll
+0x00007ffea6010000 - 0x00007ffea6135000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffea6680000 - 0x00007ffea6688000 	C:\Windows\System32\PSAPI.DLL
+0x00007ffe8a2c0000 - 0x00007ffe8a2c9000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffe98ba0000 - 0x00007ffe98bc7000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffea6140000 - 0x00007ffea61ab000 	C:\Windows\System32\WS2_32.dll
+0x00007ffe9d5c0000 - 0x00007ffe9d5ca000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffea1cc0000 - 0x00007ffea1cd2000 	C:\Windows\SYSTEM32\kernel.appcore.dll
+0x00007ffe4c520000 - 0x00007ffe4c530000 	C:\Users\raque\.jdks\corretto-11.0.15\bin\verify.dll
+0x00007ffe9b280000 - 0x00007ffe9b464000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007ffe92030000 - 0x00007ffe9205c000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007ffea4400000 - 0x00007ffea4482000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ffe4c4f0000 - 0x00007ffe4c518000 	C:\Users\raque\.jdks\corretto-11.0.15\bin\java.dll
+0x00007ffe4c4e0000 - 0x00007ffe4c4ea000 	C:\Users\raque\.jdks\corretto-11.0.15\bin\jimage.dll
+0x00007ffe9ee10000 - 0x00007ffe9ee1e000 	C:\Users\raque\.jdks\corretto-11.0.15\bin\instrument.dll
+0x00007ffe4c4a0000 - 0x00007ffe4c4b8000 	C:\Users\raque\.jdks\corretto-11.0.15\bin\zip.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Users\raque\.jdks\corretto-11.0.15\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_60b5254171f9507e;C:\Users\raque\.jdks\corretto-11.0.15\bin\server
+
+VM Arguments:
+jvm_args: -XX:TieredStopAtLevel=1 -Xverify:none -Dspring.output.ansi.enabled=always -Dcom.sun.management.jmxremote -Dspring.jmx.enabled=true -Dspring.liveBeansView.mbeanDomain -Dspring.application.admin.enabled=true -javaagent:S:\AppPrograming\IntelliJ\IntelliJ IDEA 2022.1.1\lib\idea_rt.jar=62439:S:\AppPrograming\IntelliJ\IntelliJ IDEA 2022.1.1\bin -Dfile.encoding=UTF-8 
+java_command: com.co.ias.Handyman.HandymanApplication
+java_class_path (initial): S:\IASsemillero\Handyman\build\classes\java\main;S:\IASsemillero\Handyman\build\resources\main;C:\Users\raque\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-web\2.6.7\d877d6b14397f0c4b3a1611149a37eaf47f32195\spring-boot-starter-web-2.6.7.jar;C:\Users\raque\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.12.0\c6842c86792ff03b9f1d1fe2aab8dc23aa6c6f0e\commons-lang3-3.12.0.jar;C:\Users\raque\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-data-jpa\2.6.7\c67c8556deb506677da64cac10c6e4edcff41847\spring-boot-starter-data-jpa-2.6.7.jar;C:\Users\raque\.gradle\caches\modules-2\files-2.1\com.zaxxer\HikariCP\5.0.1\a74c7f0a37046846e88d54f7cb6ea6d565c65f9c\HikariCP-5.0.1.jar;C:\Users\raque\.gradle\caches\modules-2\files-2.1\org.postgresql\postgresql\42.3.3\6f639af368afda4c5a3e77a6299262c501e67076\postgresql-42.3.3.jar;C:\Users\raque\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-json\2.6.7\6f50e3003a0fff41ff571d52041146a19010761c\spring-boot-starter-json-2.6.7.jar;C:\Users\raque\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter\2.6.7\59bd62cd60e6e7bb2a525931947c13548b207288\spring-boot-starter-2.6.7.jar;C:\Users\raque\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-tomcat\2.6.7\22b09d173a3ca971e2f344229c13a105695ee45c\spring-boot-starter-tomcat-2.6.7.jar;C:\Users\raque\.gradle\caches\modules-2\files-2.1\org.springframework\spring-webmvc\5.3.19\ba2fc03a3bcc925458e1179ef88f5833fb1971d\spring-webmvc-5.3.19.jar;C:\Users\raque\.gradle\caches\modules-2\files-2.1\org.springframework\spring-web\5.3.19\cdffc649d28d360d5891244e45277aa135ac647d\spring-web-5.3.19.jar;C:\Users\raque\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-starter-jdbc\2.6.7\59b45ed0a157283ecbdf76fc30805a80aae6cfb7\spring-boot-starter-jdbc-2.6.7.jar;C:\Users\raque\.gradle\caches\modules-2
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     bool BytecodeVerificationLocal                = false                                     {product} {command line}
+     bool BytecodeVerificationRemote               = false                                     {product} {command line}
+     intx CICompilerCount                          = 3                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 4                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 234881024                                 {product} {ergonomic}
+     bool ManagementServer                         = true                                      {product} {command line}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 3741319168                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 6973028                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 244685212                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 0                                      {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     intx TieredStopAtLevel                        = 1                                         {product} {command line}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=S:\JAVA\jdk17
+PATH=C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Python39\Scripts\;C:\Program Files\Python39\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;S:\AppPrograming\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\ProgramData\chocolatey\bin;S:\AppPrograming\Node\;C:\Program Files\MongoDB\Server\5.0\bin;S:\MongoDB\mongosh-1.3.0-win32-x64\bin;;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\raque\AppData\Local\Microsoft\WindowsApps;S:\AppPrograming\xampp\php;E:\Programas E\Git\Git\cmd;C:\Users\raque\AppData\Local\GitHubDesktop\bin;C:\Users\raque\spicetify-cli;C:\Users\raque\AppData\Roaming\npm;S:\AppPrograming\VSCode\Microsoft VS Code\bin
+USERNAME=raque
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 23 Model 24 Stepping 1, AuthenticAMD
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10 , 64 bit Build 19041 (10.0.19041.1706)
+OS uptime: 0 days 3:22 hours
+Hyper-V role detected
+
+CPU:total 4 (initial active 4) (4 cores per cpu, 1 threads per core) family 23 model 24 stepping 1 microcode 0x0, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, mmxext, 3dnowpref, lzcnt, sse4a, tsc, tscinvbit, tscinv, bmi1, bmi2, adx, sha, fma
+
+Memory: 4k page, system-wide physical 14270M (1558M free)
+TotalPageFile size 14270M (AvailPageFile size 138M)
+current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
+current process commit charge ("private bytes"): 49M, peak: 273M
+
+vm_info: OpenJDK 64-Bit Server VM (11.0.15+9-LTS) for windows-amd64 JRE (11.0.15+9-LTS), built on Apr 15 2022 22:20:31 by "Administrator" with unknown MS VC++:1916
+
+END.
