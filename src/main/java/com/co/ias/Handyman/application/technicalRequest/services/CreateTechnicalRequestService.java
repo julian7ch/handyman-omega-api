@@ -1,8 +1,6 @@
 package com.co.ias.Handyman.application.technicalRequest.services;
 
-import com.co.ias.Handyman.application.technical.domain.Technical;
-
-import com.co.ias.Handyman.application.technical.model.TechnicalDTO;
+import com.co.ias.Handyman.application.service.ports.out.ServiceRepository;
 import com.co.ias.Handyman.application.technical.ports.out.TechnicalRepository;
 import com.co.ias.Handyman.application.technicalRequest.domain.TechnicalRequest;
 import com.co.ias.Handyman.application.technicalRequest.model.TechnicalRequestDTO;
@@ -10,8 +8,16 @@ import com.co.ias.Handyman.application.technicalRequest.ports.in.CreateTechnical
 import com.co.ias.Handyman.application.technicalRequest.ports.out.TechnicalRequestRepository;
 import org.springframework.stereotype.Service;
 
+
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 @Service
 public class CreateTechnicalRequestService implements CreateTechnicalRequestUseCase {
@@ -20,30 +26,68 @@ public class CreateTechnicalRequestService implements CreateTechnicalRequestUseC
     private final TechnicalRequestRepository technicalRequestRepository;
     private final TechnicalRepository technicalRepository;
 
+    private final ServiceRepository serviceRepository;
+
 
     public CreateTechnicalRequestService(TechnicalRequestRepository technicalRequestRepository,
-                                         TechnicalRepository technicalRepository) {
+                                         TechnicalRepository technicalRepository,
+                                         ServiceRepository serviceRepository) {
 
         this.technicalRequestRepository = technicalRequestRepository;
         this.technicalRepository = technicalRepository;
+        this.serviceRepository = serviceRepository;
     }
 
 
     @Override
-    public TechnicalRequestDTO execute(TechnicalRequestDTO technicalRequestDTO) throws SQLException {
+    public TechnicalRequestDTO execute(TechnicalRequestDTO technicalRequestDTO) throws SQLException, FileNotFoundException, NoSuchFieldException {
 
 
         TechnicalRequest technicalRequest = technicalRequestDTO.toDomain();
 
-        boolean existsId = technicalRepository.existsById(technicalRequestDTO.getTechnicalId());
+        boolean existsIdTech = technicalRepository.existsById(technicalRequestDTO.getTechnicalId());
 
-        if (existsId == true){
-            technicalRequestRepository.save(technicalRequestDTO);
-            return technicalRequestDTO;
+        boolean existsIdService = serviceRepository.existsById(technicalRequestDTO.getRequestId());
+
+        boolean existsDate = technicalRequestRepository.existsTechnicalRequestDTOByStartDayAndEndDay(technicalRequestDTO.getStartDay(), technicalRequestDTO.getEndDay());
+
+        /*
+         Boolean for create service after actual day
+        */
+        LocalDateTime now = LocalDateTime.now();
+        boolean startAfterNow = technicalRequestDTO.getStartDay().isAfter(now);
+
+        Long daysBeforeService = ChronoUnit.DAYS.between(technicalRequestDTO.getStartDay(),
+                now);
+
+        if (existsIdTech == true){
+            if (existsIdService == true){
+                if(existsDate == false){
+                    if(!startAfterNow && daysBeforeService < 7){
+
+                        technicalRequestRepository.save(technicalRequestDTO);
+
+                        return technicalRequestDTO;
+
+
+                    } else{
+                        throw new DateTimeException("Days Wrong");
+                    }
+
+                } else {
+                    throw new NoSuchFieldException("Data Not Found");
+                }
+
+
+            } else{
+                throw new FileNotFoundException("Data Not Found");
+            }
+
         } else {
-            throw new SQLException("No access");
+            throw new SQLException("Data Not Found");
 
         }
+
 
 
 

@@ -9,7 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.time.DateTimeException;
 
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 @RestController
@@ -36,7 +38,32 @@ public class TechnicalRequestController {
             );
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(appError);
 
-        } catch (IllegalArgumentException | NullPointerException exception ){
+        } catch (FileNotFoundException exception){
+            ApplicationError appError = new ApplicationError(
+                    "No se encuentra el ID del servicio especificado.",
+                    exception.getMessage()
+            );
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(appError);
+
+        } catch (NoSuchFieldException exception){
+
+            ApplicationError appError = new ApplicationError(
+                    "No se puede crear una petición de servicio técnico para una fecha ya utilizada.",
+                    exception.getMessage()
+            );
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(appError);
+
+        } catch (DateTimeException exception){
+
+            ApplicationError appError = new ApplicationError(
+                    "No se puede crear una petición de servicio técnico con más de 7 días atrás, " +
+                            "o después de la fecha actual.",
+                    exception.getMessage()
+            );
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(appError);
+
+        }
+        catch (IllegalArgumentException | NullPointerException exception ){
             ApplicationError appError = new ApplicationError(
                     "Input no Validation",
                     "Bad Input data"
